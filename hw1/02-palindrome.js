@@ -4,12 +4,16 @@ const result = document.querySelector(".result");
 elem.addEventListener("input", handleInput);
 
 function handleInput(input) {
-  console.log(input);
-  if (input.data > 0) {
-    result.textContent = "you entered a positive number";
-    // check for palindrome
+  let number = Number(input.data);
+
+  if (Number.isNaN(number) === false && number > 0) {
+    if (checkPalindrome(number)) {
+      result.textContent = "Yes. This is a palindrome!";
+    } else {
+      result.textContent = "No. Please try again.";
+    }
   } else {
-    result.textContent = "error: please enter a positive number";
+    result.textContent = "Error: Please enter a positive number.";
   }
 }
 
@@ -20,6 +24,7 @@ function checkPalindrome(number) {
     number = number.toString();
     let i = 0;
     let len = number.length;
+
     isPalindrome = true;
     while (i < len - i && isPalindrome) {
       if (number[i] !== number[len - 1 - i]) isPalindrome = false;
