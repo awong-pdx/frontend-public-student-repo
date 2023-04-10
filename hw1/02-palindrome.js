@@ -4,10 +4,11 @@ const result = document.querySelector(".result");
 elem.addEventListener("input", handleInput);
 
 function handleInput(input) {
-  let number = Number(input.data);
+  let number = Number(input.target.value);
 
   if (Number.isNaN(number) === false && number > 0) {
     if (checkPalindrome(number)) {
+      console.log(Math.random() + "checking your number");
       result.textContent = "Yes. This is a palindrome!";
     } else {
       result.textContent = "No. Please try again.";
