@@ -8,7 +8,6 @@ function handleInput(input) {
 
   if (Number.isNaN(number) === false && number > 0) {
     if (checkPalindrome(number)) {
-      console.log(Math.random() + "checking your number");
       result.textContent = "Yes. This is a palindrome!";
       result.setAttribute("class", "text-success");
     } else {
