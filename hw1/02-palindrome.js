@@ -10,11 +10,14 @@ function handleInput(input) {
     if (checkPalindrome(number)) {
       console.log(Math.random() + "checking your number");
       result.textContent = "Yes. This is a palindrome!";
+      result.setAttribute("class", "text-success");
     } else {
       result.textContent = "No. Please try again.";
+      result.setAttribute("class", "text-danger");
     }
   } else {
     result.textContent = "Error: Please enter a positive number.";
+    result.setAttribute("class", "text-warning");
   }
 }
 
