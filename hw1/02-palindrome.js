@@ -17,7 +17,7 @@ function handleInput(input) {
     }
   } else {
     result.textContent = "Error: Please enter a positive number.";
-    result.setAttribute("class", "text-warning");
+    result.setAttribute("class", "text-danger ");
   }
 }
 
