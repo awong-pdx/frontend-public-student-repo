@@ -32,7 +32,7 @@ const handleInput = function handleUserInput(input) {
     }
   } else {
     result.textContent = 'Error: Please enter a positive number.';
-    result.setAttribute('class', 'text-danger ');
+    result.setAttribute('class', 'text-danger');
   }
 };
 
