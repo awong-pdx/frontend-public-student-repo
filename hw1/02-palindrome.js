@@ -6,14 +6,9 @@ const checkPalindrome = function checkIfNumberIsAPalindrome(number) {
 
   if (Number.isInteger(number)) {
     const num = number.toString();
-    let i = 0;
-    const len = num.length;
+    const reversedNum = num.split('').reverse().join('');
 
-    isPalindrome = true;
-    while (i < len - i && isPalindrome) {
-      if (num[i] !== num[len - 1 - i]) isPalindrome = false;
-      i += 1;
-    }
+    if (reversedNum === num) isPalindrome = true;
   }
 
   return isPalindrome;
