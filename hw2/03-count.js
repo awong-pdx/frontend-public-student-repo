@@ -18,8 +18,8 @@ const highlight = function findAndHighlightInputWordInText(inputWord, text) {
 
 const handleIn = function handleInput(event) {
   const { value } = event.target;
-  console.log(`The value found from handling input: ${value}`);
   const newInnerHTML = highlight(value, originalTextContent);
+
   if (searchText.innerHTML !== newInnerHTML) {
     searchText.innerHTML = newInnerHTML;
   } else {
@@ -27,5 +27,4 @@ const handleIn = function handleInput(event) {
   }
 };
 
-// textInput.addEventListener('keydown', handle);
 textInput.addEventListener('input', handleIn);
