@@ -34,7 +34,6 @@ const toggleButton = function toggleStartStopButton() {
   }
 };
 
-// needs to be renamed
 const toggleChange = function toggleBackgroundColorChange() {
   if (!intervalID) intervalID = setInterval(changeBackground, currentInterval);
   else {
