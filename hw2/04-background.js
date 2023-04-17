@@ -4,6 +4,7 @@ const startStop = document.querySelector('.start-stop');
 const intervalBox = document.querySelector('.interval-box');
 let currentInterval = 1000;
 let intervalID = null;
+
 background.style.background = 'rgb(25, 0, 255, 0.5)';
 
 const colorGen = function generateRandomColorValue() {
@@ -11,7 +12,7 @@ const colorGen = function generateRandomColorValue() {
 };
 
 const changeBackground = function changeBackgroundColor() {
-  background.style.background = `rgb(${colorGen()}, ${colorGen()},${colorGen()},0.5`;
+  background.style.background = `rgb(${colorGen()}, ${colorGen()}, ${colorGen()}, 0.5`;
 };
 
 const getInterval = function getCurrentIntervalInput(input) {
@@ -40,6 +41,7 @@ const toggleChange = function toggleBackgroundColorChange() {
     clearInterval(intervalID);
     intervalID = null;
   }
+
   toggleButton();
 };
 

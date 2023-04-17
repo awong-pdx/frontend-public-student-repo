@@ -1,4 +1,3 @@
-// Add your code here
 const registrationForm = document.querySelector('.registration-form');
 
 const logForm = function captureAndLogRegistrationForm(event) {
@@ -28,7 +27,6 @@ const logForm = function captureAndLogRegistrationForm(event) {
   `);
 
   event.preventDefault();
-  console.log(event.target);
 };
 
 registrationForm.addEventListener('submit', logForm);

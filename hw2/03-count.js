@@ -10,6 +10,7 @@ const highlight = function findAndHighlightInputWordInText(inputWord, text) {
   if (typeof inputWord === 'string' && inputWord !== '') {
     const wordReplacement = `<span class='bg-warning'>${inputWord}</span>`;
     const inputWordSpaceCheck = new RegExp(`\\b${inputWord}\\b`, 'g');
+
     newTextInnerHTML = text.split(inputWordSpaceCheck).join(wordReplacement);
   }
 
