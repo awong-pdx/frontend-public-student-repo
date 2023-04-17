@@ -16,15 +16,15 @@
       <h1 class="text-center mb-4">Exercise 05 - Form</h1>
       <div class="my-3">
         <label for="full-name" class="form-label fw-bold">Full Name:</label>
-        <input class="form-control" type="text" name="" id="full-name">
+        <input class="form-control" type="text" name="fullName" id="full-name">
       </div>
       <div class="my-3">
         <label for="email" class="form-label fw-bold">Email:</label>
-        <input class="form-control" type="email" name="" id="email">
+        <input class="form-control" type="email" name="email" id="email">
       </div>
       <div class="my-3">
         <label for="registration-status" class="form-label fw-bold">Registration Status:</label>
-        <select class="form-select" name="registration-status" id="registration-status">
+        <select class="form-select" name="registrationStatus" id="registration-status">
           <option value="">Choose an Option</option>
           <option value="undergraduate">Undergraduate</option>
           <option value="graduate">Graduate</option>
@@ -33,21 +33,21 @@
       <fieldset class="my-3">
         <legend class="fs-6 fw-bold">Have you taken any of the following courses?</legend>
         <div>
-          <input type="checkbox" name="courses-taken" id="programming-languages">
+          <input type="checkbox" name="coursesTaken" id="programming-languages">
           <label for="programming-languages">Programming Languages</label>
         </div>
         <div>
-          <input type="checkbox" name="courses-taken" id="operating-systems">
+          <input type="checkbox" name="coursesTaken" id="operating-systems">
           <label for="operating-systems">Operating Systems</label>
         </div>
         <div>
-          <input type="checkbox" name="courses-taken" id="full-stack">
+          <input type="checkbox" name="coursesTaken" id="full-stack">
           <label for="full-stack">Full Stack Web Development</label>
         </div>
       </fieldset>
       <div class="my-3">
         <label class="d-block fw-bold" for="anything-else">Anything else?</label>
-        <textarea class="form-control" id="anything-else" rows="3"></textarea>
+        <textarea class="form-control" name="anythingElse" id="anything-else" rows="3"></textarea>
       </div>
       <div class="row">
         <input class="col btn btn-primary m-1" type="submit" value="Submit">
