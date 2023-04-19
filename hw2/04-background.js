@@ -2,13 +2,13 @@
 const background = document.querySelector('.background');
 const startStop = document.querySelector('.start-stop');
 const intervalBox = document.querySelector('.interval-box');
-let currentInterval = 1000;
+let currentDelay = 1000;
 let intervalID = null;
 
 background.style.background = 'rgb(25, 0, 255, 0.5)';
 
 const colorGen = function generateRandomColorValue() {
-  return Math.floor(Math.random() * 255);
+  return Math.floor(Math.random() * 256);
 };
 
 const changeBackground = function changeBackgroundColor() {
@@ -16,11 +16,11 @@ const changeBackground = function changeBackgroundColor() {
 };
 
 const getInterval = function getCurrentIntervalInput(input) {
-  currentInterval = input.target.value * 1000;
+  currentDelay = input.target.value * 1000;
 };
 
 const toggleButton = function toggleStartStopButton() {
-  if (startStop.className.includes('btn-primary')) {
+  if (startStop.textContent === 'Start') {
     startStop.className = startStop.className.replace(
       'btn-primary',
       'btn-danger',
@@ -36,7 +36,7 @@ const toggleButton = function toggleStartStopButton() {
 };
 
 const toggleChange = function toggleBackgroundColorChange() {
-  if (!intervalID) intervalID = setInterval(changeBackground, currentInterval);
+  if (!intervalID) intervalID = setInterval(changeBackground, currentDelay);
   else {
     clearInterval(intervalID);
     intervalID = null;
@@ -47,3 +47,5 @@ const toggleChange = function toggleBackgroundColorChange() {
 
 startStop.addEventListener('click', toggleChange);
 intervalBox.addEventListener('input', getInterval);
+
+//interval can still be set to zero manually and there will be a strobe!
