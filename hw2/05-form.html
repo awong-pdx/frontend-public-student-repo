@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>05 - Form</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+  <script defer src="05-form.js"></script>
+</head>
+
+<body class="container-xs d-flex justify-content-center align-items-baseline vw-100 vh-100 bg-dark">
+  <main class="bg-light rounded p-4 mt-5">
+    <form class="registration-form">
+      <h1 class="text-center mb-4">Exercise 05 - Form</h1>
+      <div class="my-3">
+        <label for="full-name" class="form-label fw-bold">Full Name:</label>
+        <input class="form-control" type="text" name="fullName" id="full-name">
+      </div>
+      <div class="my-3">
+        <label for="email" class="form-label fw-bold">Email:</label>
+        <input class="form-control" type="email" name="email" id="email">
+      </div>
+      <div class="my-3">
+        <label for="registration-status" class="form-label fw-bold">Registration Status:</label>
+        <select class="form-select" name="registrationStatus" id="registration-status">
+          <option value="">Choose an Option</option>
+          <option value="undergraduate">Undergraduate</option>
+          <option value="graduate">Graduate</option>
+        </select>
+      </div>
+      <fieldset class="my-3">
+        <legend class="fs-6 fw-bold">Have you taken any of the following courses?</legend>
+        <div>
+          <input type="checkbox" name="coursesTaken" id="programming-languages">
+          <label for="programming-languages">Programming Languages</label>
+        </div>
+        <div>
+          <input type="checkbox" name="coursesTaken" id="operating-systems">
+          <label for="operating-systems">Operating Systems</label>
+        </div>
+        <div>
+          <input type="checkbox" name="coursesTaken" id="full-stack">
+          <label for="full-stack">Full Stack Web Development</label>
+        </div>
+      </fieldset>
+      <div class="my-3">
+        <label class="d-block fw-bold" for="anything-else">Anything else?</label>
+        <textarea class="form-control" name="anythingElse" id="anything-else" rows="3"></textarea>
+      </div>
+      <div class="row">
+        <input class="col btn btn-primary m-1" type="submit" value="Submit">
+        <input class="col btn btn-secondary m-1" type="reset" value="Reset">
+      </div>
+    </form>
+  </main>
+</body>
+
+</html>
