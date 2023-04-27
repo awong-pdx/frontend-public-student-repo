@@ -1,7 +1,7 @@
 // Add your code here
 const background = document.querySelector('.background');
-const startStop = document.querySelector('.start-stop');
-const intervalBox = document.querySelector('.interval-box');
+const startStopBtn = document.querySelector('.start-stop');
+const intervalInputBox = document.querySelector('.interval-box');
 let currentDelay = 1000;
 let intervalID = null;
 
@@ -15,23 +15,35 @@ const changeBackground = function changeBackgroundColor() {
   background.style.background = `rgb(${colorGen()}, ${colorGen()}, ${colorGen()}, 0.5`;
 };
 
+const disableStartStopBtn = function disableStartStopBtnUsingAttribute() {
+  startStopBtn.setAttribute('disabled', 'true');
+};
+
+const enableStartStopBtn = function enableStartStopBtnUsingAttribute() {
+  startStopBtn.removeAttribute('disabled');
+};
+
 const getInterval = function getCurrentIntervalInput(input) {
   currentDelay = input.target.value * 1000;
+  if (currentDelay < 1000) {
+    disableStartStopBtn();
+  } else enableStartStopBtn();
+};
+
+const styleButtonClass = function styleStartStopButtonUsingClassNameReplace(
+  originalClass,
+  replaceClass,
+) {
+  startStopBtn.className = startStopBtn.className.replace(`${originalClass}`, `${replaceClass}`);
 };
 
 const toggleButton = function toggleStartStopButton() {
-  if (startStop.textContent === 'Start') {
-    startStop.className = startStop.className.replace(
-      'btn-primary',
-      'btn-danger',
-    );
-    startStop.textContent = 'Stop';
+  if (startStopBtn.textContent === 'Start') {
+    styleButtonClass('btn-primary', 'btn-danger');
+    startStopBtn.textContent = 'Stop';
   } else {
-    startStop.className = startStop.className.replace(
-      'btn-danger',
-      'btn-primary',
-    );
-    startStop.textContent = 'Start';
+    styleButtonClass('btn-danger', 'btn-primary');
+    startStopBtn.textContent = 'Start';
   }
 };
 
@@ -45,7 +57,5 @@ const toggleChange = function toggleBackgroundColorChange() {
   toggleButton();
 };
 
-startStop.addEventListener('click', toggleChange);
-intervalBox.addEventListener('input', getInterval);
-
-//interval can still be set to zero manually and there will be a strobe!
+startStopBtn.addEventListener('click', toggleChange);
+intervalInputBox.addEventListener('input', getInterval);
