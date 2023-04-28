@@ -28,11 +28,70 @@ const borderColors = [
 
 // url for the Thrones API
 const url = 'https://thronesapi.com/api/v2/Characters';
+let myChars = [];
+
+const doAsync = async function doAsyncThings() {
+  const response = await fetch(url);
+  const data = await response.json();
+
+  return data;
+};
+
+const cleanName = function validateAndCleanLastName(lastName) {
+  let cleanedName = '';
+
+  if (lastName === '' || lastName === 'None') cleanedName = 'Unknown';
+  else if (lastName === 'Targaryan') cleanedName = 'Targaryen';
+  else cleanedName = lastName;
+
+  return cleanedName;
+};
+
+// const isLastBlank = function checkLastNameForBlankOrTypo(lastName) {
+//   if (lastName === '' || lastName === 'None') return true;
+//   return false;
+// };
+
+const reducer = function reduceTheCharactersArray(
+  lastNameCounter,
+  { lastName },
+) {
+  // let currentCount;
+  // if (isLastBlank(lastName)) currentCount = lastNameCounter.Unknown;
+  const cleanedName = cleanName(lastName);
+
+  const currentCount = lastNameCounter[cleanedName] ?? 0;
+  return {
+    ...lastNameCounter,
+    [cleanedName]: currentCount + 1,
+    // isLastBlank(lastName)
+    // isLastBlank(lastName) ? {([lastName]: currentCount + 1) : ([lastName]: currentCount + 1)},
+  };
+};
+
+doAsync()
+  .then((data) => {
+    console.log(data.map((character) => character.lastName));
+    console.log(data[0]);
+    myChars = [...data];
+    console.log(myChars);
+    console.log(myChars[0]);
+
+    // let nameCount = {};
+    const nameCount = data.reduce(reducer, { Unknown: 0 });
+    console.log(nameCount);
+    return myChars;
+    // myChars = [...data];
+    // return myChars;
+  })
+  // .then((data) => data.map((character) => myChars.push(character)))
+  // .then(console.log(myChars[0]))
+  .catch((error) => console.log(error));
 
 const renderChart = () => {
   const donutChart = document.querySelector('.donut-chart');
 
-  new Chart(donutChart, {
+  const myChart = new Chart(donutChart, {
     type: 'doughnut',
     data: {
       labels: ['label', 'label', 'label', 'label'],
