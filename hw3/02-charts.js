@@ -1,4 +1,21 @@
-const backgroundColors = [
+const genRBGAColor = function generateRandomBackgroundColor(a = 0.8) {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgba(${r}, ${g}, ${b}, ${a})`;
+};
+
+const generateBGColors = function generateBackgroundColors(num = 11) {
+  const generatedBGColors = [];
+  let count = num;
+  while (count > 0) {
+    generatedBGColors.push(genRBGAColor());
+    count -= 1;
+  }
+  return generatedBGColors;
+};
+
+const originalBackgroundColors = [
   'rgba(54, 162, 235, 0.8)',
   'rgba(255, 206, 86, 0.8)',
   'rgba(255, 99, 132, 0.8)',
@@ -11,6 +28,8 @@ const backgroundColors = [
   'rgba(210, 199, 199, 0.8)',
   'rgba(78, 52, 199, 0.8)',
 ];
+
+const backgroundColors = generateBGColors(28);
 
 const borderColors = [
   'rgba(54, 162, 235, 1)',
@@ -37,69 +56,62 @@ const doAsync = async function doAsyncThings() {
   return data;
 };
 
-const cleanName = function validateAndCleanLastName(lastName) {
-  let cleanedName = '';
+const cleanName = function validateAndCleanLastName(houseName) {
+  const regex = /House./;
+  let cleanedName = houseName.replace(regex, '');
 
-  if (lastName === '' || lastName === 'None') cleanedName = 'Unknown';
-  else if (lastName === 'Targaryan') cleanedName = 'Targaryen';
-  else cleanedName = lastName;
+  if (
+    cleanedName === '' ||
+    cleanedName === 'None' ||
+    cleanedName === 'Unkown'
+  ) {
+    cleanedName = 'Unknown';
+  } else if (
+    cleanedName === 'Targaryan' ||
+    cleanedName === 'Worm' ||
+    cleanedName === 'Naathi' ||
+    cleanedName === 'Naharis'
+  ) {
+    cleanedName = 'Targaryen';
+  } else if (cleanedName === 'Lanister' || cleanedName === 'Qyburn') {
+    cleanedName = 'Lannister';
+  } else if (cleanedName === 'Lorathi') {
+    cleanedName = 'Lorath';
+  } else if (cleanedName === 'Sand' || cleanedName === 'Viper') {
+    cleanedName = 'Martell';
+  }
 
   return cleanedName;
 };
 
-// const isLastBlank = function checkLastNameForBlankOrTypo(lastName) {
-//   if (lastName === '' || lastName === 'None') return true;
-//   return false;
-// };
-
 const reducer = function reduceTheCharactersArray(
-  lastNameCounter,
-  { lastName },
+  houseNameCounter,
+  { family },
 ) {
-  // let currentCount;
-  // if (isLastBlank(lastName)) currentCount = lastNameCounter.Unknown;
-  const cleanedName = cleanName(lastName);
+  const cleanedName = cleanName(family);
 
-  const currentCount = lastNameCounter[cleanedName] ?? 0;
+  const currentCount = houseNameCounter[cleanedName] ?? 0;
   return {
-    ...lastNameCounter,
+    ...houseNameCounter,
     [cleanedName]: currentCount + 1,
-    // isLastBlank(lastName)
-    // isLastBlank(lastName) ? {([lastName]: currentCount + 1) : ([lastName]: currentCount + 1)},
   };
 };
 
-doAsync()
-  .then((data) => {
-    console.log(data.map((character) => character.lastName));
-    console.log(data[0]);
-    myChars = [...data];
-    console.log(myChars);
-    console.log(myChars[0]);
-
-    // let nameCount = {};
-    const nameCount = data.reduce(reducer, { Unknown: 0 });
-    console.log(nameCount);
-    return myChars;
-    // myChars = [...data];
-    // return myChars;
-  })
-  // .then((data) => data.map((character) => myChars.push(character)))
-  // .then(console.log(myChars[0]))
-  .catch((error) => console.log(error));
-
-const renderChart = () => {
+const renderChart = (
+  keyLabels = ['label1', 'label2', 'label3', 'label4'],
+  valueData = [1, 12, 33, 5],
+) => {
   const donutChart = document.querySelector('.donut-chart');
 
   const myChart = new Chart(donutChart, {
     type: 'doughnut',
     data: {
-      labels: ['label', 'label', 'label', 'label'],
+      labels: keyLabels,
       datasets: [
         {
           label: 'My First Dataset',
-          data: [1, 12, 33, 5],
-          backgroundColor: backgroundColors,
+          data: valueData,
+          backgroundColor: originalBackgroundColors,
           borderColor: borderColors,
           borderWidth: 1,
         },
@@ -108,4 +120,15 @@ const renderChart = () => {
   });
 };
 
-renderChart();
+doAsync()
+  .then((data) => {
+    myChars = [...data];
+    // console.log(myChars);
+    // console.log(myChars.map((character) => character.family));
+
+    const nameCount = data.reduce(reducer, {});
+    // console.log(nameCount);
+    renderChart(Object.keys(nameCount), Object.values(nameCount));
+    return myChars;
+  })
+  .catch((error) => console.log(error));
