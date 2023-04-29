@@ -27,6 +27,16 @@ const originalBackgroundColors = [
   'rgba(40, 159, 64, 0.8)',
   'rgba(210, 199, 199, 0.8)',
   'rgba(78, 52, 199, 0.8)',
+  'rgba(64, 162, 235, 0.8)',
+  'rgba(245, 206, 86, 0.8)',
+  'rgba(245, 99, 132, 0.8)',
+  'rgba(85, 192, 192, 0.8)',
+  'rgba(163, 102, 255, 0.8)',
+  'rgba(245, 159, 64, 0.8)',
+  'rgba(209, 199, 199, 0.8)',
+  'rgba(93, 102, 255, 0.8)',
+  'rgba(50, 159, 64, 0.8)',
+  'rgba(220, 199, 199, 0.8)',
 ];
 
 const backgroundColors = generateBGColors(28);
@@ -43,13 +53,22 @@ const borderColors = [
   'rgba(40, 159, 64, 1)',
   'rgba(210, 199, 199, 1)',
   'rgba(78, 52, 199, 1)',
+  'rgba(64, 162, 235, 1)',
+  'rgba(245, 206, 86, 1)',
+  'rgba(245, 99, 132, 1)',
+  'rgba(85, 192, 192, 1)',
+  'rgba(163, 102, 255, 1)',
+  'rgba(245, 159, 64, 1)',
+  'rgba(209, 199, 199, 1)',
+  'rgba(93, 102, 255, 1)',
+  'rgba(50, 159, 64, 1)',
+  'rgba(220, 199, 199, 1)',
 ];
 
 // url for the Thrones API
 const url = 'https://thronesapi.com/api/v2/Characters';
-let myChars = [];
 
-const doAsync = async function doAsyncThings() {
+const getCharacterData = async function getCharacterDataFromURL() {
   const response = await fetch(url);
   const data = await response.json();
 
@@ -120,15 +139,9 @@ const renderChart = (
   });
 };
 
-doAsync()
+getCharacterData()
   .then((data) => {
-    myChars = [...data];
-    // console.log(myChars);
-    // console.log(myChars.map((character) => character.family));
-
     const nameCount = data.reduce(reducer, {});
-    // console.log(nameCount);
     renderChart(Object.keys(nameCount), Object.values(nameCount));
-    return myChars;
   })
   .catch((error) => console.log(error));
