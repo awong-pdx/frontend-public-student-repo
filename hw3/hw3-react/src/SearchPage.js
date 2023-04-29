@@ -1,5 +1,12 @@
+import Search from './Search';
+import Container from 'react-bootstrap/Container';
+
 function SearchPage() {
-  return <div>Search</div>;
+  return (
+    <Container>
+      <Search />
+    </Container>
+  );
 }
 
 export default SearchPage;

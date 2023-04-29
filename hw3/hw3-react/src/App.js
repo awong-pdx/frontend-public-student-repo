@@ -9,7 +9,7 @@ function App() {
       <SiteNav />
       <Container className="pt-5 mt-1">
         <AppRouter />
-        <header className="App-header">
+        {/* <header className="App-header">
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
@@ -21,7 +21,7 @@ function App() {
           >
             Learn React
           </a>
-        </header>
+        </header> */}
       </Container>
     </div>
   );
