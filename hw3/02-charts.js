@@ -128,7 +128,7 @@ const renderChart = (
       labels: keyLabels,
       datasets: [
         {
-          label: 'My First Dataset',
+          label: 'Members of House',
           data: valueData,
           backgroundColor: originalBackgroundColors,
           borderColor: borderColors,

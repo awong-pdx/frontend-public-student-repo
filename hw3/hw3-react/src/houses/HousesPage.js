@@ -1,5 +1,10 @@
+import { useState } from 'react';
+import { ChartData } from 'chart.js';
+import { Chart, Doughnut } from 'react-chartjs-2';
+import HouseChart from './HouseChart';
+
 function HousesPage() {
-  return <div>Houses</div>;
+  return <HouseChart></HouseChart>;
 }
 
 export default HousesPage;
