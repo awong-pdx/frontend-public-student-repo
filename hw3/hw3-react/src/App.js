@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <SiteNav />
-      <Container className="pt-5 mt-1">
+      <Container className="pt-5 mt-5">
         <AppRouter />
         <CharactersRequest />
       </Container>
