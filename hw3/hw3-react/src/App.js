@@ -2,6 +2,7 @@ import './App.css';
 import Container from 'react-bootstrap/Container';
 import SiteNav from './SiteNav';
 import AppRouter from './AppRouter';
+import CharactersRequest from './CharactersRequest';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <SiteNav />
       <Container className="pt-5 mt-1">
         <AppRouter />
+        <CharactersRequest />
         {/* <header className="App-header">
           <p>
             Edit <code>src/App.js</code> and save to reload.
