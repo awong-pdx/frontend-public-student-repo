@@ -36,7 +36,7 @@ function SearchBar(props) {
             onChange={handleChange}
             aria-describedby="searchHelpBlock"
           ></Form.Control>
-          <Form.Text id="searchHelpBlock" muted>
+          <Form.Text id="searchHelpBlock" className="text-dark">
             Enter the name of a character to search for.
           </Form.Text>
         </Form.Group>

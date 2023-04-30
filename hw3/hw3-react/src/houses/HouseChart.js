@@ -73,7 +73,18 @@ function HouseChart() {
 
   return (
     <div className="donut-chart">
-      <Doughnut data={chartData}></Doughnut>
+      <Doughnut
+        data={chartData}
+        options={{
+          responsive: true,
+          plugins: {
+            subtitle: {
+              display: true,
+              text: 'Number of Characters in Each House',
+            },
+          },
+        }}
+      ></Doughnut>
     </div>
   );
 }

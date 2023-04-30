@@ -1,10 +1,16 @@
-import { useState } from 'react';
-import { ChartData } from 'chart.js';
-import { Chart, Doughnut } from 'react-chartjs-2';
 import HouseChart from './HouseChart';
+import Container from 'react-bootstrap/container';
+import Row from 'react-bootstrap/row';
 
 function HousesPage() {
-  return <HouseChart></HouseChart>;
+  return (
+    <Container>
+      <h1>Houses</h1>
+      <Row>
+        <HouseChart></HouseChart>
+      </Row>
+    </Container>
+  );
 }
 
 export default HousesPage;

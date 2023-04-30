@@ -37,22 +37,20 @@ function SearchPage() {
         alert(`There was a match for ${name}!`);
         setResults([...results, character]);
       }
-      //what:
+
       return true;
     });
   }
 
   return (
     <Container>
-      <Container>
+      <Container className="character-search">
         <h1>Character Search</h1>
         <SearchBar searchName={searchName} setResults={setResults} />
       </Container>
-      <Container>
-        <div className="character-match-container mt-2 bg-dark">
-          <Row className="py-4">{characterMatches}</Row>
-        </div>
-      </Container>
+      <div className="character-match-container mt-2 bg-dark">
+        <Row className="py-4">{characterMatches}</Row>
+      </div>
     </Container>
   );
 }
