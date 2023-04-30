@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import HomePage from './HomePage';
-import SearchPage from './SearchPage';
-import HousesPage from './HousesPage';
+import HomePage from '../home/HomePage';
+import SearchPage from '../search/SearchPage';
+import HousesPage from '../houses/HousesPage';
 
 function AppRouter() {
   return (

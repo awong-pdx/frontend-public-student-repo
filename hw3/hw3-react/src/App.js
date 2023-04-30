@@ -1,7 +1,7 @@
 import './App.css';
 import Container from 'react-bootstrap/Container';
-import SiteNav from './SiteNav';
-import AppRouter from './AppRouter';
+import SiteNav from './navigation/SiteNav';
+import AppRouter from './navigation/AppRouter';
 import CharactersRequest from './CharactersRequest';
 
 function App() {
