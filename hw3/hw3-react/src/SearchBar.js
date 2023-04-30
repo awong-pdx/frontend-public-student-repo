@@ -15,6 +15,7 @@ function SearchBar(props) {
     // needs better input validation?
     // if (name.length === 0) alert('Please enter a name in the search bar');
     // else props.searchName(name);
+    props.setResults([]);
     props.searchName(name);
 
     setName('');
