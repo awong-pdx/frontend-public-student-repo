@@ -70,21 +70,19 @@ function HouseChart() {
   };
 
   const chartData = createChart();
+  const chartOptions = {
+    responsive: true,
+    plugins: {
+      subtitle: {
+        display: true,
+        text: 'Number of Characters in Each House',
+      },
+    },
+  };
 
   return (
     <div className="donut-chart">
-      <Doughnut
-        data={chartData}
-        options={{
-          responsive: true,
-          plugins: {
-            subtitle: {
-              display: true,
-              text: 'Number of Characters in Each House',
-            },
-          },
-        }}
-      ></Doughnut>
+      <Doughnut data={chartData} options={chartOptions}></Doughnut>
     </div>
   );
 }
