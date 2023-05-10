@@ -26,3 +26,8 @@ h1 {
 .character-container:hover {
   background-color: var(--blue);
 }
+
+.character-img {
+  width: 250px;
+  height: 300px;
+}

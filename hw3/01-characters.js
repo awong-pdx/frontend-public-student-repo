@@ -24,8 +24,6 @@ const createImg = function createGenericImgForDOM(rowIndex, imgIndex) {
   newFigure.id = `img-${imgIndex}`;
 
   newImg.className = 'character-img';
-  newImg.style.width = '250px';
-  newImg.style.height = '300px';
 
   newFigCaption.className = 'character-name fw-bold';
 
