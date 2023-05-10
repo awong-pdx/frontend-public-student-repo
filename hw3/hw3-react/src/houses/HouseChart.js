@@ -9,7 +9,9 @@ import {
 
 ChartJS.register(ArcElement, Tooltip, Legend, Colors);
 
-function HouseChart() {
+function HouseChart(props) {
+  const { characters: storedCharacters } = props;
+
   const cleanName = function validateAndCleanLastName(houseName) {
     const regex = /House./;
     let cleanedName = houseName.replace(regex, '');
@@ -52,9 +54,8 @@ function HouseChart() {
   };
 
   const createChart = function createChartDataFromSessionStorage() {
-    const storedCharacters = sessionStorage.getItem('characters');
-    const characters = JSON.parse(storedCharacters);
-    const nameCount = characters.data.reduce(reducer, {});
+    const characters = [...storedCharacters];
+    const nameCount = characters.reduce(reducer, {});
     const data = {
       labels: Object.keys(nameCount),
       datasets: [

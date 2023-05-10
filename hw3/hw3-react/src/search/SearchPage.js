@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -7,7 +7,8 @@ import Figure from 'react-bootstrap/Figure';
 import FigureImage from 'react-bootstrap/FigureImage';
 import FigureCaption from 'react-bootstrap/FigureCaption';
 
-function SearchPage() {
+function SearchPage(props) {
+  const { characters: storedCharacters } = props;
   const [results, setResults] = useState([]);
   const characterMatches = results.map((character) => (
     <Col>
@@ -24,15 +25,16 @@ function SearchPage() {
     </Col>
   ));
 
+  //make a useEffect that is dependent on (results? or >>input?)
+  // useEffect(() => {}, []);
+
   function searchName(name) {
     // this isn't working
     setResults([]);
     alert(`You searched for ${name}!`);
-    const storedCharacters = sessionStorage.getItem('characters');
-    const characters = JSON.parse(storedCharacters);
-    console.log(characters.data);
+    const characters = [...storedCharacters];
 
-    characters.data.map((character) => {
+    characters.map((character) => {
       if (name.toLowerCase() === character.fullName.toLowerCase()) {
         alert(`There was a match for ${name}!`);
         setResults([...results, character]);
