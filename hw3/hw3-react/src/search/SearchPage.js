@@ -11,9 +11,10 @@ function SearchPage(props) {
   const { characters: storedCharacters } = props;
   const [results, setResults] = useState([]);
   const characterMatches = results.map((character) => (
-    <Col>
+    <div className="character-container p-3">
       <Figure id={`img-${character.id}`} className="bg-white p-2">
         <FigureImage
+          fluid="false"
           width={'250px'}
           height={'300px'}
           src={character.imageUrl}
@@ -22,26 +23,17 @@ function SearchPage(props) {
         <FigureCaption>{character.fullName}</FigureCaption>
         <small className="d-block">{character.title}</small>
       </Figure>
-    </Col>
+    </div>
   ));
 
-  //make a useEffect that is dependent on (results? or >>input?)
-  // useEffect(() => {}, []);
-
   function searchName(name) {
-    // this isn't working
-    setResults([]);
-    alert(`You searched for ${name}!`);
     const characters = [...storedCharacters];
 
-    characters.map((character) => {
-      if (name.toLowerCase() === character.fullName.toLowerCase()) {
-        alert(`There was a match for ${name}!`);
-        setResults([...results, character]);
-      }
-
-      return true;
-    });
+    setResults([
+      ...characters.filter((character) =>
+        character.fullName.toLowerCase().includes(name.toLowerCase()),
+      ),
+    ]);
   }
 
   return (
@@ -50,8 +42,8 @@ function SearchPage(props) {
         <h1>Character Search</h1>
         <SearchBar searchName={searchName} setResults={setResults} />
       </Container>
-      <div className="character-match-container mt-2 bg-dark">
-        <Row className="py-4">{characterMatches}</Row>
+      <div className="character-match-container mt-2 bg-dark d-flex flex-wrap justify-content-center p-3">
+        {characterMatches};
       </div>
     </Container>
   );
