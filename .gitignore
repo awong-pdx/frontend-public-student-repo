@@ -3,5 +3,8 @@ node_modules/
 .vscode/
 .eslintrc.json
 .prettierrc
-package-lock.json
-package.json
+hw3/hw3-react/src/reportWebVitals.js
+hw3/hw3-react/src/setupTests.js
+hw3/hw3-react/public/manifest.json
+hw3/hw3-react/public/robots.txt
+hw3/hw3-react/src/App.test.js
