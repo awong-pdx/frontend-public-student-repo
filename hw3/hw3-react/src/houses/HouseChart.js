@@ -74,6 +74,9 @@ function HouseChart(props) {
   const chartOptions = {
     responsive: true,
     plugins: {
+      colors: {
+        forceOverride: true,
+      },
       subtitle: {
         display: true,
         text: 'Number of Characters in Each House',
